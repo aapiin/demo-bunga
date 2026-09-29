@@ -1,0 +1,15 @@
+Taruh file musik latar kamu di folder ini, misalnya:
+background-music.mp3
+
+Lalu buka file js/config.js dan pastikan bagian "music.src" menunjuk
+ke nama file yang sama persis, contoh:
+
+music: {
+  enabled: true,
+  src: "assets/music/background-music.mp3",
+  ...
+}
+
+Catatan:
+- Gunakan file mp3 milikmu sendiri (perhatikan hak cipta lagu).
+- Jika tidak ingin ada musik sama sekali, ubah "enabled" menjadi false.

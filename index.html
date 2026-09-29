@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Happy Birthday 🎂</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- lapisan kelopak bunga berjatuhan, dipakai di seluruh halaman -->
+<div class="petals-layer" id="petalsLayer" aria-hidden="true"></div>
+
+<!-- ================= 1. LOADING SCREEN ================= -->
+<section id="loadingScreen" class="screen loading-screen">
+  <div class="loading-bloom">
+    <span class="petal p1"></span>
+    <span class="petal p2"></span>
+    <span class="petal p3"></span>
+    <span class="petal p4"></span>
+    <span class="petal p5"></span>
+  </div>
+  <p class="loading-text" id="loadingText"></p>
+</section>
+
+<!-- ================= 2. PASSCODE SCREEN ================= -->
+<section id="passcodeScreen" class="screen passcode-screen hidden">
+  <div class="passcode-card">
+    <div class="passcode-flower">🌸</div>
+    <h1 class="passcode-title" id="passcodeTitle"></h1>
+    <p class="passcode-subtitle" id="passcodeSubtitle"></p>
+
+    <div class="passcode-dots" id="passcodeDots"></div>
+
+    <div class="passcode-keypad" id="passcodeKeypad"></div>
+
+    <p class="passcode-hint" id="passcodeHint"></p>
+  </div>
+</section>
+
+<!-- ================= 3. GIFT OPENING ================= -->
+<section id="giftScreen" class="screen gift-screen hidden">
+  <div class="gift-rays" aria-hidden="true"></div>
+  <div class="gift-flash" aria-hidden="true"></div>
+  <div class="gift-stage" aria-hidden="true">
+    <div class="gift-shadow"></div>
+    <div class="gift-beam"></div>
+    <div class="gift-ring r1"></div>
+    <div class="gift-ring r2"></div>
+    <div class="gift-box" id="giftBox">
+      <div class="gift-body"></div>
+      <div class="gift-lid">
+        <div class="gift-bow">
+          <span class="loop loop-l"></span>
+          <span class="loop loop-r"></span>
+          <span class="knot"></span>
+        </div>
+      </div>
+    </div>
+    <div class="gift-particles" id="giftParticles"></div>
+  </div>
+  <p class="gift-text" id="giftText"></p>
+</section>
+
+<!-- ================= MAIN CONTENT ================= -->
+<main id="mainContent" class="main-content hidden">
+
+  <!-- floating background music toggle -->
+  <button id="musicToggle" class="music-toggle" aria-label="Putar / jeda musik">
+    <span class="music-icon">♪</span>
+  </button>
+  <audio id="bgMusic" loop preload="none"></audio>
+
+  <!-- ---- 4. BOUQUET SECTION ---- -->
+  <section class="section bouquet-section" id="bouquetSection">
+    <p class="eyebrow" id="bouquetLabel"></p>
+    <h2 class="section-title" id="bouquetTitle"></h2>
+    <p class="section-subtitle" id="bouquetSubtitle"></p>
+
+    <div class="bouquet-stage" id="bouquetStage">
+      <svg class="bouquet-stems" id="bouquetStems" viewBox="0 0 320 340" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="bouquet-wrap"></div>
+      <div class="vase">🏺</div>
+    </div>
+
+    <p class="instruction-text" id="bouquetInstruction"></p>
+  </section>
+
+  <!-- flower message popup -->
+  <div class="flower-popup hidden" id="flowerPopup">
+    <div class="flower-popup-card">
+      <span class="flower-popup-emoji" id="popupEmoji"></span>
+      <p class="flower-popup-message" id="popupMessage"></p>
+      <button class="flower-popup-close" id="popupClose">Tutup</button>
+    </div>
+  </div>
+
+  <!-- ---- 5. LETTER SECTION ---- -->
+  <section class="section letter-section reveal" id="letterSection">
+    <p class="eyebrow" id="letterLabel"></p>
+    <h2 class="section-title" id="letterTitle"></h2>
+
+    <div class="letter-paper">
+      <p class="letter-date" id="letterDate"></p>
+      <p class="letter-greeting" id="letterGreeting"></p>
+      <div class="letter-body" id="letterBody"></div>
+      <p class="letter-ps" id="letterPs"></p>
+      <p class="letter-signature" id="letterSignature"></p>
+    </div>
+  </section>
+
+  <!-- ---- 6. MEMORIES / POLAROID GALLERY ---- -->
+  <section class="section memories-section" id="memoriesSection">
+    <p class="eyebrow" id="memoriesLabel"></p>
+    <h2 class="section-title" id="memoriesTitle"></h2>
+
+    <div class="polaroid-stack" id="polaroidStack"></div>
+  </section>
+
+  <!-- photo detail popup -->
+  <div class="flower-popup hidden" id="photoPopup">
+    <div class="flower-popup-card photo-popup-card">
+      <img id="photoPopupImg" class="photo-popup-img" src="" alt="">
+      <p class="photo-popup-caption" id="photoPopupCaption"></p>
+      <p class="photo-popup-date" id="photoPopupDate"></p>
+      <button class="flower-popup-close" id="photoPopupClose">Tutup</button>
+    </div>
+  </div>
+
+  <!-- ---- 7. JOURNEY TIMELINE ---- -->
+  <section class="section journey-section" id="journeySection">
+    <p class="eyebrow" id="journeyLabel"></p>
+    <h2 class="section-title" id="journeyTitle"></h2>
+
+    <div class="timeline" id="timeline"></div>
+  </section>
+
+  <!-- ---- 8. GRATITUDE JAR ---- -->
+  <section class="section gratitude-section" id="gratitudeSection">
+    <p class="eyebrow" id="gratitudeLabel"></p>
+    <h2 class="section-title" id="gratitudeTitle"></h2>
+    <p class="section-subtitle" id="gratitudeInstruction"></p>
+
+    <div class="jar-wrap">
+      <div class="jar" id="jar">
+        <span class="jar-note n1"></span>
+        <span class="jar-note n2"></span>
+        <span class="jar-note n3"></span>
+        <span class="jar-note n4"></span>
+      </div>
+      <button class="jar-button" id="jarButton"></button>
+    </div>
+
+    <div class="note-card hidden" id="noteCard">
+      <span class="note-index" id="noteIndex"></span>
+      <p class="note-text" id="noteText"></p>
+    </div>
+  </section>
+
+  <!-- ---- 9. FINALE ---- -->
+  <section class="section finale-section" id="finaleSection">
+    <div class="finale-card">
+      <span class="finale-emoji" id="finaleEmoji"></span>
+      <h2 class="finale-title" id="finaleTitle"></h2>
+      <p class="finale-subtitle" id="finaleSubtitle"></p>
+      <button class="finale-close" id="finaleClose"></button>
+    </div>
+    <p class="finale-footer" id="finaleFooter"></p>
+  </section>
+
+</main>
+
+<!-- ================= MODE DEMO: tombol kembali + WhatsApp ================= -->
+<a id="demoBack" class="demo-back hidden" href="#">
+  <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span id="demoBackText"></span>
+</a>
+
+<a id="demoWa" class="demo-wa hidden" href="#" target="_blank" rel="noopener">
+  <span class="demo-wa-icon" aria-hidden="true">
+    <svg viewBox="0 0 32 32" width="26" height="26"><path fill="#fff" d="M16.04 4C9.4 4 4 9.38 4 16.02c0 2.12.56 4.19 1.61 6.01L4 28l6.14-1.58a12 12 0 0 0 5.9 1.5h.01C22.68 27.92 28 22.54 28 15.9 28 9.3 22.68 4 16.04 4zm0 21.8h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.64.94.97-3.55-.24-.37a9.87 9.87 0 0 1-1.52-5.2c0-5.46 4.45-9.9 9.92-9.9 2.65 0 5.13 1.03 7 2.9a9.83 9.83 0 0 1 2.9 7c0 5.46-4.45 9.77-9.97 9.77zm5.44-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.91-2.2-.24-.58-.48-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>
+  </span>
+  <span class="demo-wa-label" id="demoWaLabel"></span>
+</a>
+
+<script src="js/config.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
