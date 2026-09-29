@@ -215,7 +215,7 @@ const CONFIG = {
     whatsapp: {
       // GANTI dengan nomor WA kamu: kode negara tanpa "+" dan tanpa 0 di depan
       // contoh: 0812-3456-789 -> "628123456789"
-      number: "628123456789",
+      number: "6285951529923",
       label: "Saya mau order/bertanya tentang web ini",
       // teks yang sudah terisi otomatis di chat WhatsApp
       message: "Halo, saya mau order/bertanya tentang web ini.",
